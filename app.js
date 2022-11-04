@@ -20,6 +20,10 @@ app.get("", (req, res) => {
 
 app.get("/employee/new", (req, res) => {
     res.render("new");
+});
+
+app.get("/employee/update", (req, res) => {
+    res.render("update");
 })
 
 
