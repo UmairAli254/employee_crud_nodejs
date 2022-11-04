@@ -15,8 +15,12 @@ hbs.registerPartials(partialsPath);
 
 
 app.get("", (req, res) => {
-    res.render("all_users");
+    res.render("all");
 });
+
+app.get("/employee/new", (req, res) => {
+    res.render("new");
+})
 
 
 
