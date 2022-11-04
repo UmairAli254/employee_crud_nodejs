@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-user-crud",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js -e js,css,hbs,json"
+  },
+  "keywords": [],
+  "author": "Umair Ali",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "mongoose": "^6.7.1",
+    "validator": "^13.7.0"
+  }
+}
