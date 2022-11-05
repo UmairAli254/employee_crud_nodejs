@@ -28,21 +28,28 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{#each data}}
                     <tr>
-                        <td>1</td>
-                        <td>Thomas Hardy</td>
-                        <td>thomashardy@mail.com</td>
-                        <td>89 Chiaroscuro Rd, Portland, USA</td>
-                        <td>(171) 555-2222</td>
-                        <td>Male</td>
-                        <td class="text-success">Active</td>
+                        <td>{{@index}}</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.address}}</td>
+                        <td>{{this.phone}}</td>
+                        <td>{{this.gender}}</td>
+                        {{#if this.active}}
+                            <td><span class="text-light bg-success rounded p-1">{{this.active}}</span></td>
+                        {{else}}
+                           <td><span class="text-light bg-danger rounded p-1">{{this.active}}</span></td>
+                        {{/if}}
                         <td>
-                            <a href="//localhost:3000/employee/update" class="edit"><i
-                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="//localhost:3000/employee/update" class="edit"><i class="material-icons"
+                                    data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
                                     data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>
+                    {{/each}}
+
 
                 </tbody>
             </table>
