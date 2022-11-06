@@ -23,7 +23,7 @@
                         <th>Address</th>
                         <th>Phone</th>
                         <th>Gender</th>
-                        <th>Status</th>
+                        <th>Active</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -37,15 +37,15 @@
                         <td>{{this.phone}}</td>
                         <td>{{this.gender}}</td>
                         {{#if this.active}}
-                            <td><span class="text-light bg-success rounded p-1">{{this.active}}</span></td>
+                        <td><span class="text-light bg-success rounded p-1">{{this.active}}</span></td>
                         {{else}}
-                           <td><span class="text-light bg-danger rounded p-1">{{this.active}}</span></td>
+                        <td><span class="text-light bg-danger rounded p-1">{{this.active}}</span></td>
                         {{/if}}
                         <td>
-                            <a href="//localhost:3000/employee/update" class="edit"><i class="material-icons"
-                                    data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                    data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            <a href="//localhost:3000/employee/update/{{this._id}}" class="edit"><i class="material-icons"
+                                    data-toggle="tooltip" title="Edit" id={{this._id}}>&#xE254;</i></a>
+                            <a href="//localhost:3000/employee/delete/{{this._id}}" class="delete"><i class="material-icons"
+                                    data-toggle="tooltip" title="Delete" id={{this._id}}>&#xE872;</i></a>
                         </td>
                     </tr>
                     {{/each}}

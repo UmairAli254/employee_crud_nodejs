@@ -18,8 +18,7 @@ hbs.registerPartials(partialsPath);
 app.use(express.json());
 app.use(express.urlencoded({
     extended: false
-}))
-
+}));
 
 app.get("", async (req, res) => {
     const all_data = await Mr.find();
@@ -38,10 +37,21 @@ app.get("/employee/new", (req, res) => {
     });
 });
 
-app.get("/employee/update", (req, res) => {
+app.get("/employee/update/:id", async (req, res) => {
+    const data = await Mr.findById(req.params.id);
+    // res.send(data);
+
     res.render("update", {
-        title: "Update employee"
+        title: "Update employee",
+        id: data._id,
+        name: data.name,
+        email: data.email,
+        address: data.address,
+        phone: data.phone,
+        gender: data.gender,
+        active: data.active
     });
+    // res.send(req.params);
 })
 
 
@@ -53,12 +63,37 @@ app.post("/employee/new", async (req, res) => {
         const data = await new Mr(req.body);
         const ret = await data.save();
         console.log(ret);
-        res.status(201).send(ret);
+        res.redirect("http://localhost:3000");
     } catch (err) {
         console.log(err);
         res.status(500).send(err);
     }
 });
+
+// Update 
+app.post("/employee/update/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        await Mr.findByIdAndUpdate(id, req.body, {
+            new: true
+        });
+        res.redirect("http://localhost:3000");
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+});
+
+// Delete
+app.get("/employee/delete/:id", async (req, res) => {
+    try {
+        await Mr.findByIdAndDelete(req.params.id);
+        res.redirect("http://localhost:3000");
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+})
 
 
 
